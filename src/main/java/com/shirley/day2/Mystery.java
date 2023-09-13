@@ -1,4 +1,4 @@
-package com.shirley;
+package com.shirley.day2;
 
 public class Mystery {
     private int num;

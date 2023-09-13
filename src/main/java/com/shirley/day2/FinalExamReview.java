@@ -1,7 +1,4 @@
-package com.shirley;
-
-import com.sun.source.util.SourcePositions;
-import jakarta.servlet.ServletOutputStream;
+package com.shirley.day2;
 
 public class FinalExamReview {
     public static void main(String[] args) {

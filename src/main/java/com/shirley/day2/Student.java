@@ -1,6 +1,8 @@
-package com.shirley;
+package com.shirley.day2;
 
-public class Student extends Person{
+import com.shirley.day2.Person;
+
+public class Student extends Person {
     private double gpa;
 
     public Student(String name, double gpa) {

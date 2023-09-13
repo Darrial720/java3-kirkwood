@@ -1,4 +1,4 @@
-package com.shirley;
+package com.shirley.day2;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
