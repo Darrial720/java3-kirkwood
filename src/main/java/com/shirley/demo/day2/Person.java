@@ -1,4 +1,4 @@
-package com.shirley.day2;
+package com.shirley.demo.day2;
 
 public class Person {
     private String name;

@@ -1,5 +1,5 @@
-package com.shirley.day6;
-import com.shirley.day2.BankAccount;
+package com.shirley.demo.day2.day6;
+import com.shirley.demo.day2.BankAccount;
 
 import java.util.*;
 import java.util.stream.Collectors;

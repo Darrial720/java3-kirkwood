@@ -1,6 +1,4 @@
-package com.shirley.day2;
-
-import com.shirley.day2.Person;
+package com.shirley.demo.day2;
 
 public class Student extends Person {
     private double gpa;
@@ -9,4 +7,8 @@ public class Student extends Person {
         super(name);
         this.gpa = gpa;
     }
+
+
+
 }
+

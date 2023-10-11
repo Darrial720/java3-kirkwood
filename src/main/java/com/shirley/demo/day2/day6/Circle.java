@@ -1,4 +1,4 @@
-package com.shirley.day6;
+package com.shirley.demo.day2.day6;
 
 public class Circle extends Shape {
 

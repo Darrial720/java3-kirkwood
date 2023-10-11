@@ -1,8 +1,7 @@
-package com.shirley.day7;
+package com.shirley.demo.day2.day7;
 
-import com.shirley.day2.Person;
+import com.shirley.demo.day2.Person;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +11,7 @@ public class MyCollections {
         List<String> programmingLanguages = new ArrayList<>(Arrays.asList("Python", "C#", "Java", "PHP", "Cobol"));
         List<String> copy = new ArrayList<>(programmingLanguages);
 
-        copy.removeIf((language) -> language.charAt(0) != 'P');
+        copy.removeIf((language) -> language.toLowerCase().charAt(0) != 'p');
         copy.forEach(System.out::println);
         System.out.println();
         programmingLanguages.forEach(System.out::println);
