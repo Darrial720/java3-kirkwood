@@ -2,6 +2,7 @@ package com.shirley.day16;
 
 import java.math.BigInteger;
 
+
 public class Fraction {
     private int numerator;
     private int denominator;
@@ -55,5 +56,42 @@ public class Fraction {
             simplifiedFraction.denominator *= -1;
         }
         return simplifiedFraction;
+    }
+
+    public String mixedNumber(){
+        Integer num = 0;
+        Integer num2 = 0;
+        String string = "";
+        Fraction fraction = new Fraction(this.numerator, this.denominator);
+        if(fraction.Symplify().getDenominator() == 1){
+            num = fraction.Symplify().getNumerator();
+            string = num.toString();
+        } else if (fraction.Symplify().getNumerator() == 0 ) {
+            num = 0;
+            string =num.toString();
+        } else if (fraction.Symplify().getNumerator() > fraction.Symplify().getDenominator()) {
+            if(fraction.Symplify().getNumerator() % fraction.Symplify().getDenominator() == 0){
+                num = (fraction.Symplify().getNumerator()/fraction.Symplify().getDenominator());
+                string = num.toString();
+            }
+            else {
+                num = fraction.Symplify().getNumerator() / fraction.Symplify().getDenominator();
+                num2 = fraction.Symplify().getNumerator() % fraction.Symplify().getDenominator();
+                Integer num3 = fraction.Symplify().getDenominator();
+                string = num.toString() + " " +  num2.toString() + "/" + num3.toString();
+            }
+
+        }else if (fraction.Symplify().getNumerator() < fraction.Symplify().getDenominator() && Math.abs(fraction.Symplify().getNumerator()) < fraction.Symplify().getDenominator()){
+            num = fraction.Symplify().getNumerator() % fraction.Symplify().getDenominator();
+            num2 = fraction.Symplify().getDenominator();
+            string = num.toString() + "/" + num2.toString();
+        }else if((fraction.Symplify().getNumerator() < 0) && (Math.abs(fraction.Symplify().getNumerator()) > fraction.Symplify().getDenominator())){
+            num = fraction.Symplify().getNumerator() / fraction.Symplify().getDenominator();
+            num2 = Math.abs(fraction.Symplify().getNumerator() % fraction.Symplify().getDenominator());
+            Integer num3 = fraction.Symplify().getDenominator();
+            string = num.toString() + " " +  num2.toString() + "/" + num3.toString();
+        }
+
+        return string;
     }
 }
