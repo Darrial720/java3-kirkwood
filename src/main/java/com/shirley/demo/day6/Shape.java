@@ -1,4 +1,4 @@
-package com.shirley.demo.day2.day6;
+package com.shirley.demo.day6;
 
 public abstract class Shape {
 

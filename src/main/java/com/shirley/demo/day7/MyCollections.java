@@ -1,4 +1,4 @@
-package com.shirley.demo.day2.day7;
+package com.shirley.demo.day7;
 
 import com.shirley.demo.day2.Person;
 

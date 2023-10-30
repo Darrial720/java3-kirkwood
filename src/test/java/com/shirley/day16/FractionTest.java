@@ -1,5 +1,6 @@
 package com.shirley.day16;
 
+import com.shirley.demo.day16.Fraction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

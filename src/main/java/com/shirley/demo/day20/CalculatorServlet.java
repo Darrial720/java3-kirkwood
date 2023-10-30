@@ -1,4 +1,4 @@
-package com.shirley;
+package com.shirley.demo.day20;
 
 import com.shirley.project.utilities.Helpers;
 import jakarta.servlet.ServletException;
@@ -17,7 +17,7 @@ public class CalculatorServlet extends HttpServlet {
     private static Map<String, String> results = new HashMap<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/calculator.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/day20/calculator.jsp").forward(req, resp);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CalculatorServlet extends HttpServlet {
         results.put("num1", num1);
         results.put("num2", num2);
         req.setAttribute("results", results);
-        req.getRequestDispatcher("WEB-INF/calculator.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/day20/calculator.jsp").forward(req, resp);
 
     }
 
