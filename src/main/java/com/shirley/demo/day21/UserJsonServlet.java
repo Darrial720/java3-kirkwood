@@ -32,6 +32,7 @@ public class UserJsonServlet extends HttpServlet {
     public void init() throws ServletException {
         try {
             JSONObject json = JsonReader.readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=12&nat=us&noinfo");
+            //JSONObject json = JsonReader.readJsonFromUrl("rapidapi.com/?format=json&seed=abc&results=12");
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);

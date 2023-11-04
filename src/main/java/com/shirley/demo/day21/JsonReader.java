@@ -33,11 +33,14 @@ public class JsonReader {
     }
 
     public static void main(String[] args) throws IOException, JSONException {
-        JSONObject json = readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=5&nat=us&inc=name,location,email,picture,id,registered,login,dob,phone,cell,gender,nat&noinfo");
+        //JSONObject json = readJsonFromUrl("https://randomuser.me/api/?format=json&seed=abc&results=5&nat=us&inc=name,location,email,picture,id,registered,login,dob,phone,cell,gender,nat&noinfo");
 //        System.out.println(json.toString());
 //        System.out.println(json.get("results"));
+        JSONObject json2 = readJsonFromUrl("https://www.themealdb.com/api/json/v1/1/categories.php/");
         ObjectMapper mapper = new ObjectMapper();
-        UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
-        userFromJson.getUsers().forEach(System.out::println);
+        //UserFromJson userFromJson = mapper.readValue(json.toString(), UserFromJson.class);
+        MealsFromJson mealsFromJson = mapper.readValue(json2.toString(), MealsFromJson.class);
+        //userFromJson.getUsers().forEach(System.out::println);
+        mealsFromJson.getCategories().forEach(System.out::println);
     }
 }
