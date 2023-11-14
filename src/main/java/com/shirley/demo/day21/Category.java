@@ -1,7 +1,7 @@
 package com.shirley.demo.day21;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-public class Category {
+public class Category implements Comparable<Category>{
 
     @JsonProperty("idCategory")
     private int idCategory;
@@ -58,5 +58,14 @@ public class Category {
                 ", strIngredient1='" + strIngredient1 + '\'' +
                 ", strImageSource='" + strImageSource + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Category o) {
+        int result = this.getStrCategory().compareTo(o.getStrCategory());
+        if(result == 0){
+            result = this.getStrCategoryDescription().compareTo(o.getStrCategoryDescription());
+        }
+        return result;
     }
 }

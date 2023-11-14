@@ -2,7 +2,7 @@ package com.shirley.demo.day21;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class User {
+public class User implements Comparable<User>{
     @JsonProperty("name")
     private Name name;
     @JsonProperty("location")
@@ -95,4 +95,12 @@ public class User {
     }
 
 
+    @Override
+    public int compareTo(User o) {
+        int result = this.getName().getLast().compareTo(o.getName().getLast());
+        if(result == 0){
+            result = this.getName().getFirst().compareTo(o.getName().getFirst());
+        }
+        return result;
+    }
 }
