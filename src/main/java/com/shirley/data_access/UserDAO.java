@@ -1,7 +1,10 @@
 package com.shirley.data_access;
 //userDAO stands for user data access object
 import com.shirley.demo.day25.User;
+import com.shirley.project.utilities.PasswordUtility;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -11,6 +14,26 @@ public class UserDAO extends Database{
     public static void main(String[] args) throws SQLException {
 
         getAll().forEach(System.out::println);
+    }
+
+
+    public static void add(User user){
+        try(Connection connection = getConnection()) {
+            if(connection != null) {
+                try(CallableStatement statement = connection.prepareCall("{CALL sp_add_user(?, ?)}")) {
+                    statement.setString(1, user.getEmail());
+                    String hashedpassword = PasswordUtility.hashpw(new String(user.getPassword()));
+                    statement.setString(2, hashedpassword);
+                    statement.executeUpdate();
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                } catch (InvalidKeySpecException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static List<User> getAll(){

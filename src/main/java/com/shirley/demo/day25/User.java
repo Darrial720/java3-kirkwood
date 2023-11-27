@@ -2,6 +2,8 @@ package com.shirley.demo.day25;
 
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User {
     private int id;
@@ -33,12 +35,37 @@ public class User {
         return email;
     }
 
+    public void setEmail(String email) {
+        // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
+        if(!email.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
+            throw new IllegalArgumentException("Invalid email address");
+        }
+        this.email = email;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public char[] getPassword() {
         return password;
+    }
+
+    public void setPassword(char[] password) {
+        String passwordStr = String.valueOf(password);
+        Pattern p = Pattern.compile("^" +
+                "(?=.*[0-9])" + // a digit must occur at least once
+                "(?=.*[a-z])" + // a lower case letter must occur at least once
+                "(?=.*[A-Z])" + // an upper case letter must occur at least once
+                // "(?=.*[@#$%^&+=])" + // a special character must occur at least once
+                "(?=\\S+$)" + // no whitespace allowed in the entire string
+                ".{8,}" + // anything, at least eight characters
+                "$");
+        Matcher m = p.matcher(passwordStr);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Password must contain at least 8 characters, with 1 digit, 1 lowercase,and 1 uppercase letter");
+        }
+        this.password = passwordStr.toCharArray();
     }
 
     public String getLanguage() {
@@ -78,6 +105,10 @@ public class User {
         this.created_at = created_at;
         this.last_logged_in = last_logged_in;
         this.updated_at = updated_at;
+    }
+
+    public User() {
+
     }
 
     @Override
