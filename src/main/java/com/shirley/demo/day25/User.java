@@ -27,8 +27,16 @@ public class User {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -45,6 +53,10 @@ public class User {
 
     public String getPhone() {
         return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public char[] getPassword() {
@@ -72,12 +84,31 @@ public class User {
         return language;
     }
 
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
     public String getStatus() {
         return status;
     }
 
+    public void setStatus(String status) {
+        try{
+            if(status.equals("inactive") || status.equals("active") || status.equals("locked")) {
+                this.status = status;
+            }
+        }
+        catch(IllegalArgumentException e){
+            throw new IllegalArgumentException("Invalid status");
+        }
+    }
+
     public String getPrivileges() {
         return privileges;
+    }
+
+    public void setPrivileges(String privileges) {
+        this.privileges = privileges;
     }
 
     public Instant getCreated_at() {
