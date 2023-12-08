@@ -65,6 +65,7 @@ public class LoginServlet extends HttpServlet {
                 }
                 else{
                     //passwords match
+                    attempts = 5;
                     results.put("loginSuccess", "Welcome back!");
                 }
             }
