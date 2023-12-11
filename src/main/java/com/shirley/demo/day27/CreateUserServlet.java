@@ -74,8 +74,6 @@ public class CreateUserServlet extends HttpServlet{
             }
         }
 
-
-
         req.setAttribute("results", results);
         req.getRequestDispatcher("WEB-INF/day27/create-user.jsp").forward(req, resp);
 
