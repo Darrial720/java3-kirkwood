@@ -66,6 +66,8 @@ public class Crayon implements Comparable{
 
         crayons.sort(Crayon::compareTo);
         crayons.forEach(System.out::println);
+        System.out.println();
+        System.out.println();
 
         List<Crayon> copy = new ArrayList<>(crayons);
         copy.removeIf((Crayon) -> Crayon.getPercentRemaining() < .50);
