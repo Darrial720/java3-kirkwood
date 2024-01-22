@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.Shirley</groupId>
-  <artifactId>java2-kirkwood</artifactId>
+  <artifactId>java3-kirkwood</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>java2-kirkwood</name>
+  <name>java3-kirkwood</name>
   <packaging>war</packaging>
 
   <properties>
