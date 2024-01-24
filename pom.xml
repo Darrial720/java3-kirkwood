@@ -74,6 +74,11 @@
           <artifactId>mysql-connector-j</artifactId>
           <version>8.1.0</version>
       </dependency>
+      <dependency>
+          <groupId>com.azure</groupId>
+          <artifactId>azure-communication-email</artifactId>
+          <version>1.0.9</version>
+      </dependency>
   </dependencies>
 
   <build>
