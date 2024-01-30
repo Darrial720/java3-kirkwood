@@ -16,6 +16,9 @@ import java.util.List;
 public class ArtistServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*throw new IllegalArgumentException("You can't do that");*/
+
+
         JSONObject json = JsonReader.readJsonFromUrl("https://api.deezer.com/search/artist?q=imagine+dragons");
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

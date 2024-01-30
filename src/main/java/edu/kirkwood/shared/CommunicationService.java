@@ -9,19 +9,26 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class CommunicationService
 {
-    public static void sendEmail(String emailAddress, String message)
-    {
+    private static EmailClient createEmailClient() {
         Dotenv dotenv = Dotenv.load();
-        String connectionString = dotenv.get("Email_CONNECTION");
-        EmailClient emailClient = new EmailClientBuilder().connectionString(connectionString).buildClient();
+        String connectionString = dotenv.get("MAIL_CONNECTION");
+        EmailClient emailClient = new EmailClientBuilder()
+                .connectionString(connectionString)
+                .buildClient();
 
-        EmailAddress toAddress = new EmailAddress(emailAddress);
+        return emailClient;
+    }
+
+    public static void sendEmail(String toEmailAddress, String subject, String message)    {
+        EmailClient emailClient = createEmailClient();
+
+        EmailAddress toAddress = new EmailAddress(toEmailAddress);
 
         EmailMessage emailMessage = new EmailMessage()
-                .setSenderAddress(dotenv.get("Mail_FROM"))
+                .setSenderAddress(Dotenv.load().get("MAIL_FROM"))
                 .setToRecipients(toAddress)
-                .setSubject("Testing Azure Email")
-                .setBodyPlainText("Hello world via Azure email.");
+                .setSubject(subject)
+                .setBodyHtml(message);
 
         SyncPoller<EmailSendResult, EmailSendResult> poller = emailClient.beginSend(emailMessage, null);
         PollResponse<EmailSendResult> result = poller.waitForCompletion();
