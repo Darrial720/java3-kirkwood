@@ -11,7 +11,7 @@ public class CommunicationService
 {
     private static EmailClient createEmailClient() {
         Dotenv dotenv = Dotenv.load();
-        String connectionString = dotenv.get("MAIL_CONNECTION");
+        String connectionString = dotenv.get("Email_CONNECTION");
         EmailClient emailClient = new EmailClientBuilder()
                 .connectionString(connectionString)
                 .buildClient();
@@ -25,7 +25,7 @@ public class CommunicationService
         EmailAddress toAddress = new EmailAddress(toEmailAddress);
 
         EmailMessage emailMessage = new EmailMessage()
-                .setSenderAddress(Dotenv.load().get("MAIL_FROM"))
+                .setSenderAddress(Dotenv.load().get("Mail_FROM"))
                 .setToRecipients(toAddress)
                 .setSubject(subject)
                 .setBodyHtml(message);
