@@ -23,14 +23,14 @@ public class EmailServlet extends HttpServlet {
         // Create a CommunicationService object, and call a method to send an email
         // Set the "success" attribute
         // Forward the request to the JSP
-        String success = "email sent";
+        //String success = "email sent";
         String email = req.getParameter("email1");
         String subject = req.getParameter("subject");
         String message = req.getParameter("message");
-        CommunicationService.sendEmail(email, subject, message);
+        boolean messageSent = CommunicationService.sendEmail(email, subject, message);
 
-        req.setAttribute("success", success);
-        //req.setAttribute("pageTitle", "SUCCESS");
+        req.setAttribute("success", messageSent);
+
         req.getRequestDispatcher("WEB-INF/demos/email.jsp").forward(req, resp);
     }
 }
