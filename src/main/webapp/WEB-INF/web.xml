@@ -28,6 +28,6 @@
     </context-param>
     <context-param>
         <param-name>appURLCloud</param-name>
-        <param-value>https://darryl-kw.azurewebsites.net/</param-value>
+        <param-value>https://darryl-kw.azurewebsites.net</param-value>
     </context-param>
 </web-app>

@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="jakarta.tags.core"%>
-<%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
-<%@taglib prefix="fn" uri="jakarta.tags.functions"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 <c:choose>
-    <c:when test="${pageConext.request.scheme eq 'https'}">
+    <c:when test="${pageContext.request.scheme eq 'https'}">
         <c:set var="appURL" value="${initParam['appURLCloud']}"></c:set>
 
     </c:when>
