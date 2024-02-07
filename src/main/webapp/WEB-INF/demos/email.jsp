@@ -8,6 +8,7 @@
 <%--<c:if test="${not empty success}">
     <p>Email sent</p>
 </c:if>--%>
+
 <c:choose>
     <c:when test="${not empty success and success eq true}">
         <p>Email Sent</p>
