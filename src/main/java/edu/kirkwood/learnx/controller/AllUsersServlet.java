@@ -17,6 +17,7 @@ public class AllUsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> users = UserDAO.getAll();
         req.setAttribute("users", users);
+        req.setAttribute("pageTitle", "All Users");
         req.getRequestDispatcher("WEB-INF/learnx/all-users.jsp").forward(req, resp);
     }
 }

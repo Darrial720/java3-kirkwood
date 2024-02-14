@@ -1,7 +1,4 @@
-<%@include file="/WEB-INF/shared/top.jsp"%>
-    <title>Title</title>
-</head>
-<body>
+<%@include file="/WEB-INF/learnx/top.jsp"%>
 <main>
   <div class="container">
     <hi>All Users</hi>
@@ -52,4 +49,4 @@
 
 </main>
 
-<%@include file="/WEB-INF/shared/bottom.jsp"%>
+<%@include file="/WEB-INF/learnx/bottom.jsp"%>
