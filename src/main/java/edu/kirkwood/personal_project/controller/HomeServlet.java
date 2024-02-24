@@ -1,6 +1,5 @@
 package edu.kirkwood.personal_project.controller;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
