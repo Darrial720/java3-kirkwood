@@ -1,4 +1,4 @@
 package edu.kirkwood.personal_project.model;
 
-public class ability {
+public class Ability {
 }

@@ -12,6 +12,7 @@
       <h3>Personal Projects</h3>
       <div class="list-group">
         <a href="email" class="list-group-item list-group-item-action">Send Email</a>
+        <a href="${appURL}/dbzGame" class="list-group-item list-group-item-action">DragonBall Z Game</a>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-5">
