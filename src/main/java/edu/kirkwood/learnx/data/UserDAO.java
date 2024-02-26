@@ -85,26 +85,20 @@ public class UserDAO extends Database{
                 try(CallableStatement statement2 = connection.prepareCall("{CALL sp_get_2fa_code(?)}");) {
                     statement2.setString(1, user.getEmail());
                     ResultSet resultSet = statement2.executeQuery();
-                    if(resultSet.next()){
+                    if(resultSet.next()) {
                         String code = resultSet.getString("code");
                         String method = resultSet.getString("method");
-                        if(method.equals("email")){
-                            String subject = "LearnX New User";
-                            String message = "<h2>Welcome to LearnX</h2>";
-                            message += "<p>Please enter code <b>" + code + "</b> on the website to activate your account </p>";
-                            boolean sent = CommunicationService.sendEmail(user.getEmail(), subject, message);
-                            // To do: If the email is not send, delete the user by email and delete the 2fa
-                            return sent ? code : "";
+                        if(method.equals("email")) {
+                            return CommunicationService.sendNewUserEmail(user.getEmail(), code);
                         }
                     }
-
                 }
             }
         } catch(SQLException e) {
             System.out.println("Likely error with stored procedure");
             System.out.println(e.getMessage());
         }
-        return " ";
+        return "";
     }
 
     public static void update(User user){

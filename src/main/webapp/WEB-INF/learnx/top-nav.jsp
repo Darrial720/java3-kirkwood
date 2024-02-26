@@ -17,11 +17,11 @@
     <div class="col-md-3 text-end">
       <c:choose>
         <c:when test="${empty sessionScope.activeUser}">
-          <button type="${appURL}/signin" class="btn btn-outline-orange me-2">Login</button>
+          <button type="${appURL}/signin" class="btn btn-outline-orange me-2">Sign in</button>
           <a href="${appURL}/signup" type="button" class="btn btn-orange">Sign-up</a>
         </c:when>
         <c:otherwise>
-          <a href="${appURL}/signout" type="button" class="btn btn-outline-orange me-2">Logout</a>
+          <a href="${appURL}/signout" type="button" class="btn btn-outline-orange me-2">Sign out</a>
           <a href="${appURL}/edit-profile" type="button" class="btn btn-orange">Edit Profile</a>
         </c:otherwise>
       </c:choose>
