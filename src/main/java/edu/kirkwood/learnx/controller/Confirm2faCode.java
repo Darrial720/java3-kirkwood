@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class Confirm2faCode extends HttpServlet {
             User userFromDatabase = UserDAO.get(email);
             userFromDatabase.setStatus("active");
             userFromDatabase.setPrivileges("student");
-            userFromDatabase.setLast_logged_in(Instant.now());
+            userFromDatabase.setLast_logged_in(Instant.now().atOffset(ZoneOffset.UTC).toInstant());
             UserDAO.update(userFromDatabase);
             userFromDatabase.setPassword(null);
             session.removeAttribute("code");

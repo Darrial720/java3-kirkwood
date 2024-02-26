@@ -95,6 +95,7 @@ public class User {
         if(!matcher.matches()){
             throw new IllegalArgumentException("Password must have minimum 8 characters and 3 of 4 (uppercase, lowercase, digit, symbol)");
         }
+        // Password can be set to null before the user is set as a session attribute
         this.password = password;
     }
 
