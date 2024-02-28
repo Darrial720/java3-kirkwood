@@ -54,7 +54,7 @@
                                 <div class="mb-4">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input <c:if test="${not empty results.agreeError}">is-invalid</c:if>" id="checkbox-1" name="checkbox-1" value="agree" <c:if test="${results.agree eq 'true'}">checked</c:if>>
-                                        <label class="form-check-label" for="checkbox-1">By signing up, you agree to the <a href="${appURL}/terms">terms and conditions</a></label>
+                                        <label class="form-check-label" for="checkbox-1">By signing up, you agree to the <a href="${appURL}/termsAndConditions">terms and conditions</a></label>
                                         <c:if test="${not empty results.agreeError}">
                                             <div class="invalid-feedback">
                                                     ${results.agreeError}
