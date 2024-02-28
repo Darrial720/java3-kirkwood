@@ -27,6 +27,9 @@ public class SignupServlet extends HttpServlet {
         String password1 = req.getParameter("inputPassword1");
         String password2 = req.getParameter("inputPassword2");
         String[] terms = req.getParameterValues("checkbox-1");
+        if(password1 == null) {
+            password1 = "";
+        }
 
         Map<String, String> results = new HashMap<>();
         results.put("email", email);
@@ -64,8 +67,8 @@ public class SignupServlet extends HttpServlet {
                 !results.containsKey("agreeError")
         ) {
             String code = UserDAO.add(user);
-
-            if(!code.equals("")){
+            // To do: if the email is sent, redirect to a page for the user to enter their code.
+            if(!code.equals("")) {
                 HttpSession session = req.getSession();
                 session.invalidate(); // Remove any existing session data
                 session = req.getSession();

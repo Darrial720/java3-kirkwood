@@ -23,12 +23,12 @@ public class Confirm2faCode extends HttpServlet {
         String resend = req.getParameter("resend");
         if(resend != null){
             HttpSession session = req.getSession();
-
             String codeFromSession = (String)session.getAttribute("code");
-            String email = (String)session.getAttribute("email");
-            CommunicationService.sendNewUserEmail(email, codeFromSession);
-            req.setAttribute("emailSent", "A new Email was sent with your access code");
-
+            if(codeFromSession != null && !codeFromSession.equals("")) {
+                String email = (String) session.getAttribute("email");
+                CommunicationService.sendNewUserEmail(email, codeFromSession);
+                req.setAttribute("emailSent", "A new Email was sent with your access code");
+            }
         }
         req.setAttribute("pageTitle", "Confirm Signup Code");
         req.getRequestDispatcher("WEB-INF/learnx/2fa-confirm.jsp").forward(req, resp);
