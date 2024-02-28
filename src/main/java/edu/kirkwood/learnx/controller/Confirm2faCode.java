@@ -40,17 +40,18 @@ public class Confirm2faCode extends HttpServlet {
         Map<String, String> results = new HashMap<>();
         results.put("code", code);
 
-        //Check if the code entered matches the one in the session.
+        // Check if the code entered matches the one in the session.
         HttpSession session = req.getSession();
         String codeFromSession = (String)session.getAttribute("code");
-        if(!code.equals(codeFromSession)){
+        if(!code.equals(codeFromSession)) {
             results.put("codeFail", "That code is not correct");
-        }else{
+        } else {
             String email = (String)session.getAttribute("email");
             User userFromDatabase = UserDAO.get(email);
             userFromDatabase.setStatus("active");
             userFromDatabase.setPrivileges("student");
-            userFromDatabase.setLast_logged_in(Instant.now().atOffset(ZoneOffset.UTC).toInstant());
+            // To Do: Get an instant representing UTC 0
+            userFromDatabase.setLast_logged_in(Instant.now().atOffset( ZoneOffset.UTC ).toInstant());
             UserDAO.update(userFromDatabase);
             userFromDatabase.setPassword(null);
             session.removeAttribute("code");

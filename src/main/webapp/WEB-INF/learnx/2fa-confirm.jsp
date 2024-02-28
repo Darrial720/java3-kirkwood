@@ -19,7 +19,6 @@
                     <p>Please enter the code you received via email</p>
                 </c:otherwise>
             </c:choose>
-            <p>Please enter the code you received via email</p>
             <form method="post" action="${appURL}/confirm">
                 <div class="mb-4">
                     <label for="inputCode" class="form-label">Code *</label>
