@@ -2,6 +2,8 @@ package edu.kirkwood.learnx.controller;
 
 import edu.kirkwood.learnx.data.UserDAO;
 import edu.kirkwood.learnx.model.User;
+import edu.kirkwood.shared.Helpers;
+import edu.kirkwood.shared.MyValidator;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +14,8 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
@@ -26,16 +30,17 @@ public class SignupServlet extends HttpServlet {
         String email = req.getParameter("inputEmail1");
         String password1 = req.getParameter("inputPassword1");
         String password2 = req.getParameter("inputPassword2");
+        String birthday = req.getParameter("inputbirthday");
         String[] terms = req.getParameterValues("checkbox-1");
         if(password1 == null) {
             password1 = "";
         }
 
+
         Map<String, String> results = new HashMap<>();
         results.put("email", email);
         results.put("password1", password1);
         results.put("password2", password2);
-
         User user = new User();
         try {
             user.setEmail(email);
@@ -54,6 +59,23 @@ public class SignupServlet extends HttpServlet {
         if(!password2.equals(password1)) {
             results.put("password2Error", "Passwords must match");
         }
+
+        Matcher matcher = MyValidator.birthdayPattern.matcher(birthday);
+        if(!matcher.matches()){
+            results.put("birthdayError", "Please input a correct birthday");
+        }
+        else{
+            Long yearsOld = Helpers.ageInYears(birthday);
+
+            if(yearsOld > 13){
+                results.put("birthday", birthday);
+            }
+            else{
+                results.put("birthdayError", "You must be older than 13 years old to create an account.");
+            }
+        }
+
+
         if(terms == null || !terms[0].equals("agree")) {
             results.put("agreeError", "You must agree to the terms");
             results.put("agree", "false");
