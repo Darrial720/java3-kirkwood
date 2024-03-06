@@ -41,6 +41,7 @@ public class SignupServlet extends HttpServlet {
         results.put("email", email);
         results.put("password1", password1);
         results.put("password2", password2);
+        results.put("birthday", birthday);
         User user = new User();
         try {
             user.setEmail(email);
@@ -67,10 +68,7 @@ public class SignupServlet extends HttpServlet {
         else{
             Long yearsOld = Helpers.ageInYears(birthday);
 
-            if(yearsOld > 13){
-                results.put("birthday", birthday);
-            }
-            else{
+            if(yearsOld < 13){
                 results.put("birthdayError", "You must be older than 13 years old to create an account.");
             }
         }
