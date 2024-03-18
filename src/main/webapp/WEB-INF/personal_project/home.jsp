@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/personal_project/top.jsp"%>>
+<%@include file="/WEB-INF/personal_project/top.jsp"%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" rel="stylesheet"/>
     <link rel="stylesheet" href="${appURL}/css/loading.css">

@@ -7,7 +7,22 @@
                     <div class="row my-5">
                         <div class="col-sm-10 col-xl-8 m-auto">
                             <h2>Nice to see you!</h2>
-                            <p class="lead mb-4">Please login to your account.</p>
+                            <c:choose>
+                                <c:when test="${not empty results.loginError}">
+                                    <p class="alert alert-danger">
+                                            ${results.loginError}
+                                    </p>
+                                </c:when>
+                                <c:when test="${not empty flashMessageWarning}">
+                                    <p class="alert alert-warning">
+                                            ${flashMessageWarning}
+                                    </p>
+                                    <c:remove var="flashMessageWarning" scope="session"></c:remove>
+                                </c:when>
+                                <c:otherwise>
+                                    <p class="lead mb-4">Please sign in to your account.</p>
+                                </c:otherwise>
+                            </c:choose>
 
                             <!-- Form START -->
                             <form action="${appURL}/signin" method="post">
@@ -41,6 +56,8 @@
                                         <button class="btn btn-orange mb-0" type="submit">Sign In</button>
                                     </div>
                                 </div>
+
+                                <input type="hidden" name="redirect" value="${redirect}">
                             </form>
                             <!-- Form END -->
 

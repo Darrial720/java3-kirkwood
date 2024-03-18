@@ -21,17 +21,17 @@ public class Confirm2faCode extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String resend = req.getParameter("resend");
-        if(resend != null){
+        if(resend != null) {
             HttpSession session = req.getSession();
             String codeFromSession = (String)session.getAttribute("code");
             if(codeFromSession != null && !codeFromSession.equals("")) {
                 String email = (String) session.getAttribute("email");
                 CommunicationService.sendNewUserEmail(email, codeFromSession);
-                req.setAttribute("emailSent", "A new Email was sent with your access code");
+                req.setAttribute("emailSent", "A new email was sent with your access code");
             }
         }
         req.setAttribute("pageTitle", "Confirm Signup Code");
-        req.getRequestDispatcher("WEB-INF/learnx/2fa-confirm.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/learnx/2fa-confirm.jsp").forward(req,resp);
     }
 
     @Override

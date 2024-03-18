@@ -6,7 +6,7 @@
 
     <session-config>
         <!--        Change back to 15 after testing the Remember me checkbox on Azure -->
-        <session-timeout>15</session-timeout>
+        <session-timeout>60</session-timeout>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 
@@ -24,10 +24,10 @@
         <error-code>404</error-code>
         <location>/errorHandler</location>
     </error-page>
-    <error-page>
+    <!--<error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/errorHandler</location>
-    </error-page>
+    </error-page>-->
 
     <context-param>
         <param-name>appURLLocal</param-name>
