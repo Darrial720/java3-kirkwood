@@ -62,6 +62,7 @@ public class Confirm2faCode extends HttpServlet {
             return;
         }
 
+
         req.setAttribute("results", results);
         req.setAttribute("pageTitle", "Confirm Signup Code");
         req.getRequestDispatcher("WEB-INF/learnx/2fa-confirm.jsp").forward(req,resp);

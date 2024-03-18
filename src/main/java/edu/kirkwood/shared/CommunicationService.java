@@ -33,6 +33,15 @@ public class CommunicationService
         return sent ? code : "";
     }
 
+    public static String sendNewUserEmail2(String email, String code){
+        String subject = "DBZ Game New User";
+        String message = "<h2>Welcome to the DragonBallZ Game website!</h2>";
+        message += "<p>Please enter code <b>" + code + "</b> on the website to activate your account</p>";
+        boolean sent = CommunicationService.sendEmail(email, subject, message);
+        // To do: If the email is not send, delete the user by email and delete the 2fa
+        return sent ? code : "";
+    }
+
     public static Boolean sendPasswordResetEmail(String email, String uuid, HttpServletRequest req){
         String subject = "LearnX Reset Password";
         String message = "<h2>LearnX Reset Password</h2>";

@@ -6,7 +6,7 @@
                 <h1>${pageTitle}</h1>
                 <hr class="py-2">
                 <h3>Who we are</h3>
-                <p>${initParam['project1Name']}  is an innovative tutorial site for K-12 students.</p>
+                <p>${initParam['LearnX']}  is an innovative tutorial site for K-12 students.</p>
                 <h3>Comments</h3>
                 <p>When visitors leave comments on the site we collect the data shown in the comments form, and also
                     the visitor’s IP address and browser user agent string to help spam detection.</p>
