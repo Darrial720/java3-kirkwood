@@ -1,0 +1,29 @@
+.carousel-caption{
+    margin-bottom: 350px;
+}
+
+.carousel-caption h5{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.carousel-caption p{
+    font-size: 20px;
+}
+
+
+body{
+    background-image: url("../../images/personal_project/dbz_background_photo.jpg") ;
+}
+
+a:link{
+    color:greenyellow;
+}
+
+footer{
+    color:greenyellow;
+}
+
+body{
+    color:greenyellow;
+}

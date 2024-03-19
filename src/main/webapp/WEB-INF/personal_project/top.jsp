@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 <link href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" rel="stylesheet"/>
 <link rel="stylesheet" href="${appURL}/css/loading.css">
+<link rel="stylesheet" href="${appURL}/css/personal_project/personal_project.css">
 </head>
 <body>
 <%@include file="/WEB-INF/personal_project/top-nav.jsp"%>
