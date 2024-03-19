@@ -20,6 +20,8 @@ import java.util.Map;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String redirect = req.getParameter("redirect");
+        req.setAttribute("redirect", redirect);
         req.setAttribute("pageTitle", "Log in");
         req.getRequestDispatcher("WEB-INF/personal_project/login.jsp").forward(req, resp);
     }
@@ -29,6 +31,7 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("inputEmail1");
         String password1 = req.getParameter("inputPassword1");
         String[] remember = req.getParameterValues("checkbox-1");
+        String redirect = req.getParameter("redirect");
         Map<String, String> results = new HashMap<>();
         results.put("email", email);
         results.put("password1", password1);
@@ -59,7 +62,12 @@ public class LoginServlet extends HttpServlet {
                     if(remember != null && remember[0].equals("yes")) {
                         session.setMaxInactiveInterval(10); // 7 days
                     }
-                    resp.sendRedirect("/dbzGame");
+                    if(redirect != null && !redirect.equals("")){
+                        resp.sendRedirect(redirect);
+                    }else{
+                        session.setAttribute("flashMessageSuccess", "Welcome Back!");
+                        resp.sendRedirect("dbzGame");
+                    }
                     return;
                 }
             }

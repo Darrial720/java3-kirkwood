@@ -2,6 +2,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" rel="stylesheet"/>
     <link rel="stylesheet" href="${appURL}/css/loading.css">
+    <link rel="stylesheet" href="${appURL}/css/personal_project/personal_project.css">
 </head>
 <body>
 <main class="container mb-4">
@@ -14,7 +15,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="${appURL}/images/personal_project/goku.jpg" class="d-block w-100 h-100" alt="Goku">
+                <img src="${appURL}/images/personal_project/goku.jpg" class="d-block w-100" alt="Goku">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Characters</h5>
                     <p>DragonBall Z Characters</p>
@@ -28,7 +29,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="${appURL}/images/personal_project/sensu_bean.jpg" class="d-block w-100" alt="Sensu Bean">
+                <img src="${appURL}/images/personal_project/sensu_bean.jpg" class="d-block w-100 " alt="Sensu Bean">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Items</h5>
                     <p>DragonBall Z Items</p>

@@ -16,6 +16,6 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = req.getSession();
         session.removeAttribute("activeUser");
         session.setAttribute("flashMessageWarning", "You have signed out. See you next time!");
-        resp.sendRedirect("/dbzGame");
+        resp.sendRedirect("dbzGame");
     }
 }

@@ -15,6 +15,16 @@ public class Character {
     @JsonProperty("fk_character_unlock_level")
     private int character_unlock_level;
 
+    public Character(){
+
+    }
+    public Character(int character_id, String character_name, String character_status, int character_unlock_level){
+        this.character_id = character_id;
+        this.character_name = character_name;
+        this.character_status = character_status;
+        this.character_unlock_level = character_unlock_level;
+    }
+
     public int getCharacter_id() {
         return character_id;
     }

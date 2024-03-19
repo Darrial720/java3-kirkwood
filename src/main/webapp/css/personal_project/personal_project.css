@@ -11,12 +11,25 @@
     font-size: 20px;
 }
 
+.carousel-control-next-icon:after
+{
+    content: '>';
+    font-size: 55px;
+    color: greenyellow;
+}
+
+.carousel-control-prev-icon:after{
+    content: '<';
+    font-size: 55px;
+    color: greenyellow;
+}
 
 body{
     background-image: url("../../images/personal_project/dbz_background_photo.jpg") ;
+    color:greenyellow;
 }
 
-a:link{
+a{
     color:greenyellow;
 }
 
@@ -24,6 +37,15 @@ footer{
     color:greenyellow;
 }
 
-body{
+button{
+    outline-color: greenyellow;
+}
+
+img{
+    height:500px;
+}
+
+body h1{
     color:greenyellow;
 }
+
