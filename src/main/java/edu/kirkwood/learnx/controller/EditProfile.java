@@ -1,5 +1,6 @@
 package edu.kirkwood.learnx.controller;
 
+import edu.kirkwood.learnx.data.UserDAO;
 import edu.kirkwood.learnx.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,5 +24,31 @@ public class EditProfile extends HttpServlet {
         }
         req.setAttribute("pageTitle", "Edit profile");
         req.getRequestDispatcher("WEB-INF/learnx/edit-profile.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String email = req.getParameter("emailInput");
+        String phone = req.getParameter("phoneInput");
+        String language = req.getParameter("languageInput");
+
+        HttpSession session = req.getSession();
+        User userFromSession =(User)session.getAttribute("activeUser");
+        userFromSession.setFirstName(firstName);
+        userFromSession.setLastName(lastName);
+        userFromSession.setEmail(email);
+        userFromSession.setPhone(phone);
+        userFromSession.setLanguage(language);
+
+        //to d0: validate and sanitize user inputs
+
+        UserDAO.update(userFromSession);
+        session.setAttribute("activeUser", userFromSession);
+
+        req.setAttribute("pageTitle", "Edit profile");
+        req.getRequestDispatcher("WEB-INF/learnx/edit-profile.jsp").forward(req, resp);
+
     }
 }
