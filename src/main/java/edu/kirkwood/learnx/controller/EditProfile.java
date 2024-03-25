@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/edit-profile")
 public class EditProfile extends HttpServlet {
@@ -33,16 +35,32 @@ public class EditProfile extends HttpServlet {
         String email = req.getParameter("emailInput");
         String phone = req.getParameter("phoneInput");
         String language = req.getParameter("languageInput");
+        String timezone = req.getParameter("timezoneInput");
 
         HttpSession session = req.getSession();
         User userFromSession =(User)session.getAttribute("activeUser");
+
+        Map<String, String> results = new HashMap<>();
+
         userFromSession.setFirstName(firstName);
         userFromSession.setLastName(lastName);
-        userFromSession.setEmail(email);
-        userFromSession.setPhone(phone);
-        userFromSession.setLanguage(language);
+        try {
+            userFromSession.setLanguage(language);
+        } catch(IllegalArgumentException e) {
+            results.put("languageError", e.getMessage());
+        }
+        // To-do add timeZone property
 
-        //to d0: validate and sanitize user inputs
+        if(!results.containsKey("languageError")) {
+            UserDAO.update(userFromSession);
+            session.setAttribute("activeUser", userFromSession);
+            session.setAttribute("flashMessageSuccess", "Your Profile was updated");
+        }
+        else{
+            session.setAttribute("flashMessageWarning", "Your profile was not updated. Try again later.");
+        }
+
+
 
         UserDAO.update(userFromSession);
         session.setAttribute("activeUser", userFromSession);

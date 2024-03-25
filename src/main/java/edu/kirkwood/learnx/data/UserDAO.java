@@ -106,8 +106,8 @@ public class UserDAO extends Database {
     }
 
     public static void update(User user) {
-        try (Connection connection = getConnection();
-             CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
+        try(Connection connection = getConnection();
+            CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
         ) {
             statement.setInt(1, user.getId());
             statement.setString(2, user.getFirstName());
@@ -119,9 +119,22 @@ public class UserDAO extends Database {
             statement.setString(8, user.getPrivileges());
             statement.setTimestamp(9, Timestamp.from(user.getLast_logged_in()));
             statement.executeUpdate();
-        } catch (SQLException e) {
+        } catch(SQLException e) {
             System.out.println("Likely error with stored procedure");
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static void delete(User user) {
+        try (Connection connection = getConnection()) {
+            if (connection != null) {
+                try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_user(?)}")) {
+                    statement.setInt(1, user.getId());
+                    statement.execute();
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
