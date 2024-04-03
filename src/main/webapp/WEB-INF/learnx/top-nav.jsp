@@ -12,15 +12,15 @@
       <c:choose>
 
         <c:when test="${sessionScope.activeUser.privileges eq 'student'}">
-          <li><a href="#" class="nav-link px-2">Student Dashboard</a></li>
+          <li><a href="${appURL}/student" class="nav-link px-2">Student Dashboard</a></li>
         </c:when>
 
         <c:when test="${sessionScope.activeUser.privileges eq 'teacher'}">
-          <li><a href="#" class="nav-link px-2">Teacher Dashboard</a></li>
+          <li><a href="${appURL}/teacher" class="nav-link px-2">Teacher Dashboard</a></li>
         </c:when>
 
         <c:when test="${sessionScope.activeUser.privileges eq 'admin'}">
-          <li><a href="#" class="nav-link px-2">Admin Dashboard</a></li>
+          <li><a href="${appURL}/admin" class="nav-link px-2">Admin Dashboard</a></li>
         </c:when>
 
       </c:choose>

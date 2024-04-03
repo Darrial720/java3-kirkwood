@@ -63,4 +63,19 @@ public class CourseDAO extends Database{
         }
         return categories;
     }
+
+    public static boolean enroll(int studentId, int courseId){
+        try(Connection connection = getConnection();
+        CallableStatement statement = connection.prepareCall("{Call sp_all_enrollment(?,?)}")){
+            statement.setInt(1, studentId);
+            statement.setInt(2, courseId);
+            int rowsAffected = statement.executeUpdate();
+            return  rowsAffected == 1;
+        }
+        catch (SQLException e){
+
+        }
+        return false;
+    }
+
 }
