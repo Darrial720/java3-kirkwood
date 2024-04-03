@@ -8,6 +8,7 @@
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a href="${appURL}/learnx" class="nav-link px-2 link-dark">Home</a></li>
+      <li><a href="${appURL}/courses" class="nav-link px-2">Courses</a></li>
       <c:choose>
 
         <c:when test="${sessionScope.activeUser.privileges eq 'student'}">
