@@ -29,7 +29,7 @@ public class CreateAccountServlet extends HttpServlet {
         String email = req.getParameter("inputEmail1");
         String password1 = req.getParameter("inputPassword1");
         String password2 = req.getParameter("inputPassword2");
-        String birthday = req.getParameter("inputbirthday");
+        /*String birthday = req.getParameter("inputbirthday");*/
         String[] terms = req.getParameterValues("checkbox-1");
         if(password1 == null) {
             password1 = "";
@@ -40,7 +40,7 @@ public class CreateAccountServlet extends HttpServlet {
         results.put("email", email);
         results.put("password1", password1);
         results.put("password2", password2);
-        results.put("birthday", birthday);
+        /*results.put("birthday", birthday);*/
         UserTwo user = new UserTwo();
         try {
             user.setEmail(email);
@@ -60,7 +60,7 @@ public class CreateAccountServlet extends HttpServlet {
             results.put("password2Error", "Passwords must match");
         }
 
-        Matcher matcher = MyValidator.birthdayPattern.matcher(birthday);
+        /*Matcher matcher = MyValidator.birthdayPattern.matcher(birthday);
         if(!matcher.matches()){
             results.put("birthdayError", "Please input a correct birthday");
         }
@@ -70,7 +70,7 @@ public class CreateAccountServlet extends HttpServlet {
             if(yearsOld < 13){
                 results.put("birthdayError", "You must be older than 13 years old to create an account.");
             }
-        }
+        }*/
 
 
         if(terms == null || !terms[0].equals("agree")) {

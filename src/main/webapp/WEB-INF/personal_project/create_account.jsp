@@ -45,7 +45,7 @@
                                         </c:if>
                                     </div>
                                 </div>
-                                <div class="mb-4">
+                                <%--<div class="mb-4">
                                     <label for="inputbirthday" class="form-label">Date of Birth *</label>
                                     <div class="input-group input-group-lg">
                                         <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fa fa-calendar"></i></span>
@@ -56,7 +56,7 @@
                                             </div>
                                         </c:if>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <!-- Check box -->
                                 <div class="mb-4">
                                     <div class="form-check">
