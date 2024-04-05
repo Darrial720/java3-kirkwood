@@ -12,6 +12,17 @@
             <li><a href="#" class="nav-link px-2">Maps</a></li>
             <li><a href="#" class="nav-link px-2">Abilities and Items</a></li>
             <li><a href="#" class="nav-link px-2">About</a></li>
+            <c:choose>
+
+                <c:when test="${sessionScope.activeUser.privileges eq 'player'}">
+                    <li><a href="${appURL}/student" class="nav-link px-2">Player Info</a></li>
+                </c:when>
+
+                <c:when test="${sessionScope.activeUser.privileges eq 'admin'}">
+                    <li><a href="${appURL}/all-players" class="nav-link px-2">All Accounts</a></li>
+                </c:when>
+
+            </c:choose>
         </ul>
 
         <div class="col-md-3 text-end">
