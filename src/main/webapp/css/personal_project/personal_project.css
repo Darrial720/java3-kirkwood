@@ -33,9 +33,6 @@ a{
     color:greenyellow;
 }
 
-footer{
-    color:greenyellow;
-}
 
 .btn{
     background-color: greenyellow;
@@ -56,5 +53,10 @@ body h1{
 
 header, main, footer {
     background-color: hsla(0, 0%, 0%, 50%);
+    color: greenyellow;
+}
+
+footer{
+    color: greenyellow;
 }
 

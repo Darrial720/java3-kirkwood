@@ -12,17 +12,20 @@
             <li><a href="#" class="nav-link px-2">Maps</a></li>
             <li><a href="#" class="nav-link px-2">Abilities and Items</a></li>
             <li><a href="#" class="nav-link px-2">About</a></li>
-            <c:choose>
 
-                <c:when test="${sessionScope.activeUser.privileges eq 'player'}">
-                    <li><a href="${appURL}/student" class="nav-link px-2">Player Info</a></li>
-                </c:when>
 
-                <c:when test="${sessionScope.activeUser.privileges eq 'admin'}">
-                    <li><a href="${appURL}/all-players" class="nav-link px-2">All Accounts</a></li>
-                </c:when>
+            <c:if test="${sessionScope.activeUser.privileges eq 'player'}">
+                <li><a href="#" class="nav-link px-2">Player Info</a></li>
+            </c:if>
 
-            </c:choose>
+            <c:if test="${sessionScope.activeUser.privileges eq 'admin'}">
+                <li><a href="${appURL}/all-players" class="nav-link px-2">All Accounts</a></li>
+            </c:if>
+
+            <c:if test="${sessionScope.activeUser.privileges eq 'player' or sessionScope.activeUser.privileges eq 'admin'}">
+                <li><a href="#" class="nav-link px-2">The Dbz Game</a></li>
+            </c:if>
+
         </ul>
 
         <div class="col-md-3 text-end">
