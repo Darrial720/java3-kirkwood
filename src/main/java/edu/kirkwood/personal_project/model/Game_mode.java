@@ -30,6 +30,22 @@ public class Game_mode {
         return gameModeUnlockLevel;
     }
 
+    public void setGameModeID(int gameModeID) {
+        this.gameModeID = gameModeID;
+    }
+
+    public void setPvePvp(String pvePvp) {
+        this.pvePvp = pvePvp;
+    }
+
+    public void setGameModeName(String gameModeName) {
+        this.gameModeName = gameModeName;
+    }
+
+    public void setGameModeUnlockLevel(int gameModeUnlockLevel) {
+        this.gameModeUnlockLevel = gameModeUnlockLevel;
+    }
+
     @Override
     public String toString() {
         return "Game_mode{" +

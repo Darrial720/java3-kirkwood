@@ -41,6 +41,22 @@ public class Character {
         return character_unlock_level;
     }
 
+    public void setCharacter_id(int character_id) {
+        this.character_id = character_id;
+    }
+
+    public void setCharacter_name(String character_name) {
+        this.character_name = character_name;
+    }
+
+    public void setCharacter_status(String character_status) {
+        this.character_status = character_status;
+    }
+
+    public void setCharacter_unlock_level(int character_unlock_level) {
+        this.character_unlock_level = character_unlock_level;
+    }
+
     @Override
     public String toString() {
         return "Character{" +
