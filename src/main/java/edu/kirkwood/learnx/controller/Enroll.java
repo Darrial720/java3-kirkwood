@@ -13,11 +13,10 @@ import java.io.IOException;
 
 @WebServlet("/enroll")
 public class Enroll extends HttpServlet {
-    private boolean isNumber(String s){
+    private boolean isNumber(String str) {
         try {
-                Integer.parseInt(s);
-        }
-        catch(NumberFormatException e){
+            Integer.parseInt(str);
+        } catch(NumberFormatException e) {
             return false;
         }
         return true;
@@ -25,27 +24,25 @@ public class Enroll extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String courseId = req.getParameter("course");
-        if(courseId == null || !isNumber(courseId)){
+        if(courseId == null || !isNumber(courseId)) {
             resp.sendRedirect("courses");
             return;
         }
         int courseIdInt = Integer.parseInt(courseId);
         HttpSession session = req.getSession();
         User userFromSession = (User)session.getAttribute("activeUser");
-        if(userFromSession == null || !userFromSession.getPrivileges().equals("student")){
+        if(userFromSession == null || !userFromSession.getPrivileges().equals("student")) {
             resp.sendRedirect("courses");
             return;
         }
-        if(CourseDAO.enroll(userFromSession.getId(), courseIdInt)){
-            session.setAttribute("FlashMessageSuccess", "You are enrolled!");
+        if(CourseDAO.enroll(userFromSession.getId(), courseIdInt)) {
+            session.setAttribute("flashMessageSuccess", "You are enrolled!");
             resp.sendRedirect("student");
             return;
-        }
-        else{
-            session.setAttribute("FlashMessageDanger", "Enrollment Failed. Try again later");
+        } else {
+            session.setAttribute("flashMessageDanger", "Enrollment failed. Try again later.");
             resp.sendRedirect("courses");
             return;
         }
-
     }
 }

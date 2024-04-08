@@ -1,6 +1,8 @@
 package edu.kirkwood.learnx.model;
 
-public class Course {
+import org.jetbrains.annotations.NotNull;
+
+public class Course implements Comparable<Course>{
     private int id;
     private String name;
     private String description;
@@ -96,5 +98,18 @@ public class Course {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(@NotNull Course o) {
+        return this.name.compareTo(o.name);
     }
 }

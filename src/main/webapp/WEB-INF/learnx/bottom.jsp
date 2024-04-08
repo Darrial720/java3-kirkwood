@@ -4,4 +4,10 @@
 <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 <script src="${appURL}/js/loading.js"></script>
 <script src="${appURL}/js/learnx.js"></script>
-<%@include file="/WEB-INF/shared/bottom.jsp"%>>
+<c:if test="${pageTitle eq 'Student Dashboard'}">
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs@1.5.0/dist/purecounter_vanilla.js"></script>
+    <script>
+        new PureCounter();
+    </script>
+</c:if>
+<%@include file="/WEB-INF/shared/bottom.jsp"%>

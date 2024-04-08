@@ -69,9 +69,22 @@ Page content START -->
                           </div>
                           <c:if test="${activeUser.privileges eq 'student'}">
                             <!-- Enroll -->
-                            <div class="mt-3 mt-sm-0">
+                            <c:choose>
+                              <c:when test="${courseMap.containsKey(course) or not empty courseMap[course]}">
+                                <div class="mt-3 mt-sm-0">
+                                  <a href="${appURL}/enroll?course=${course.id}" class="btn btn-secondary disabled">Enrolled</a>
+                                </div>
+                              </c:when>
+                              <c:otherwise>
+                                <div class="mt-3 mt-sm-0">
+                                  <a href="${appURL}/enroll?course=${course.id}" class="btn btn-dark">Enroll</a>
+                                </div>
+                              </c:otherwise>
+
+                            </c:choose>
+                            <%--<div class="mt-3 mt-sm-0">
                               <a href="${appURL}/enroll?course=${course.id}" class="btn btn-dark">Enroll</a>
-                            </div>
+                            </div>--%>
                           </c:if>
                         </div>
                       </div>
