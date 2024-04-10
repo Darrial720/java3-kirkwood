@@ -3,7 +3,6 @@ package edu.kirkwood.learnx.model;
 import edu.kirkwood.shared.MyValidator;
 
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 
 public class User {
@@ -20,13 +19,25 @@ public class User {
     private Instant last_logged_in;
     private Instant updated_at;
 
-    public User(){
+    public User() {
 
     }
 
-    public User(int id, String firstName, String lastName, String email, String phone, char[] password,
-                String language, String status, String privileges, Instant created_at,
-                Instant last_logged_in, Instant updated_at) {
+    public User(int id, String firstName, String lastName, String email, String phone, char[] password, String language, String status, String privileges) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.language = language;
+        this.status = status;
+        this.privileges = privileges;
+    }
+
+    public User(int id, String firstName, String lastName, String email, String phone,
+                char[] password, String language, String status, String privileges,
+                Instant created_at, Instant last_logged_in, Instant updated_at) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,6 +65,7 @@ public class User {
     }
 
     public void setFirstName(String firstName) {
+        // todo: validate string
         this.firstName = firstName;
     }
 
@@ -62,6 +74,7 @@ public class User {
     }
 
     public void setLastName(String lastName) {
+        // todo: validate string
         this.lastName = lastName;
     }
 
@@ -71,8 +84,8 @@ public class User {
 
     public void setEmail(String email) {
         Matcher matcher = MyValidator.emailPattern.matcher(email);
-        if(!matcher.matches()){
-            throw new IllegalArgumentException("Invalid Email");
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("Invalid email");
         }
         this.email = email;
     }
@@ -82,6 +95,10 @@ public class User {
     }
 
     public void setPhone(String phone) {
+        Matcher matcher = MyValidator.phonePattern.matcher(phone);
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("Invalid phone number");
+        }
         this.phone = phone;
     }
 
@@ -106,6 +123,10 @@ public class User {
     }
 
     public void setLanguage(String language) {
+        Matcher matcher = MyValidator.languagePattern.matcher(language);
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("Invalid language");
+        }
         this.language = language;
     }
 
@@ -114,6 +135,7 @@ public class User {
     }
 
     public void setStatus(String status) {
+        // todo: validate string
         this.status = status;
     }
 
@@ -122,6 +144,7 @@ public class User {
     }
 
     public void setPrivileges(String privileges) {
+        // todo: validate string
         this.privileges = privileges;
     }
 
@@ -152,18 +175,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", password=" + Arrays.toString(password) +
-                ", language='" + language + '\'' +
-                ", status='" + status + '\'' +
-                ", privileges='" + privileges + '\'' +
-                ", created_at=" + created_at +
-                ", last_logged_in=" + last_logged_in +
-                ", updated_at=" + updated_at +
                 '}';
     }
 }
