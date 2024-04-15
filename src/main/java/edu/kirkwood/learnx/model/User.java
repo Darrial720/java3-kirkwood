@@ -3,6 +3,8 @@ package edu.kirkwood.learnx.model;
 import edu.kirkwood.shared.MyValidator;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.regex.Matcher;
 
 public class User {
@@ -18,6 +20,7 @@ public class User {
     private Instant created_at;
     private Instant last_logged_in;
     private Instant updated_at;
+    private LocalDate birthday;
 
     public User() {
 
@@ -152,12 +155,20 @@ public class User {
         return created_at;
     }
 
+    public Date getCreated_at_toDate() {
+        return Date.from(created_at);
+    }
+
     public void setCreated_at(Instant created_at) {
         this.created_at = created_at;
     }
 
     public Instant getLast_logged_in() {
         return last_logged_in;
+    }
+
+    public Date getLast_logged_in_toDate() {
+        return Date.from(last_logged_in);
     }
 
     public void setLast_logged_in(Instant last_logged_in) {
@@ -168,8 +179,24 @@ public class User {
         return updated_at;
     }
 
+    public Date getUpdated_at_toDate() {
+        return Date.from(updated_at);
+    }
+
     public void setUpdated_at(Instant updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public Date getBirthday_toDate() {
+        return java.sql.Date.valueOf(birthday);
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     @Override

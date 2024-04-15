@@ -2,6 +2,7 @@ package edu.kirkwood.learnx.controller;
 
 import edu.kirkwood.learnx.data.CourseDAO;
 import edu.kirkwood.learnx.model.User;
+import edu.kirkwood.shared.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,7 +32,7 @@ public class Enroll extends HttpServlet {
         int courseIdInt = Integer.parseInt(courseId);
         HttpSession session = req.getSession();
         User userFromSession = (User)session.getAttribute("activeUser");
-        if(userFromSession == null || !userFromSession.getPrivileges().equals("student")) {
+        if(Helpers.isStudent(userFromSession) == true) {
             resp.sendRedirect("courses");
             return;
         }
