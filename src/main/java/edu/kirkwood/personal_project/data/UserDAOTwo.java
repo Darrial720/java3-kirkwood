@@ -98,7 +98,7 @@ public class UserDAOTwo extends Database{
             System.out.println(e.getMessage());
         }
         return "";
-}
+    }
 
     public static void update(UserTwo user) {
         try (Connection connection = getConnection();

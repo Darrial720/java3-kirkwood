@@ -1,7 +1,6 @@
 package edu.kirkwood.learnx.model;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.time.Instant;
 
 public class JobListing {

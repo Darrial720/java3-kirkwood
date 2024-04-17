@@ -35,17 +35,4 @@ public class CharacterDAO extends Database{
         }
         return characters;
     }
-
-    public static void deleteCharacter(Character character){
-        try (Connection connection = getConnection()) {
-            if (connection != null) {
-                try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_character(?)}")) {
-                    statement.setInt(1, character.getCharacter_id());
-                    statement.executeUpdate();
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
