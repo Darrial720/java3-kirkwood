@@ -47,6 +47,12 @@ Page content START -->
                           <div class="d-flex align-items-center">
                             <p class="mb-0 ms-2">Taught by: ${course.teacherFirstName}&nbsp;${course.teacherLastName}</p>
                           </div>
+
+                          <div class="d-flex align-items-center">
+                            <c:set var="cost" value="1234.567"></c:set>
+                            <p class="mb-0 ms-2">Cost: <fmt:formatNumber value="${cost}" type="currency" currencyCode="USD" /></p>
+                          </div>
+
                           <c:if test="${activeUser.privileges eq 'student'}">
                             <!-- Enroll -->
                             <c:choose>

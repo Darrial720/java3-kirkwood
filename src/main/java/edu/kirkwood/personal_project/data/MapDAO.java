@@ -52,7 +52,7 @@ public class MapDAO extends Database{
         }
     }
 
-    public static String createMap(Map map) {
+    /*public static String createMap(Map map) {
         try (Connection connection = getConnection();
              CallableStatement statement = connection.prepareCall("{CALL sp_create_map(?, ?, ?, ?)}")
         ) {
@@ -78,4 +78,5 @@ public class MapDAO extends Database{
             System.out.println(e.getMessage());
         }
         return "";
+    }*/
 }
