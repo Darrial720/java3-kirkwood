@@ -121,10 +121,10 @@
                                         <td>
                                             <!-- Info -->
                                             <div class="overflow-hidden">
-                                                <c:set var="percent_complete" value="0.85"></c:set>
-                                                <h6 class="mb-0"><fmt:formatNumber type="percent" value="${percent_complete}" /></h6>
+                                                <c:set var="percent_complete" value="0.264637"></c:set>
+                                                <h6 class="mb-0"><fmt:formatNumber type="percent" value="${percent_complete}" maxFractionDigits="2" /></h6>
                                                 <div class="progress progress-sm bg-primary bg-opacity-10">
-                                                    <div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: ${percent_complete * 100}%" aria-valuenow="${percent_complete * 100}" aria-valuemin="0" aria-valuemax="100">
                                                     </div>
                                                 </div>
                                             </div>

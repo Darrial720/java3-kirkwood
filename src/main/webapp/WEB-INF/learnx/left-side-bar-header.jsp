@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <h1 class="card-title">${fn:escapeXml(activeUser.firstName)}&nbsp;${fn:escapeXml(activeUser.lastName)}</h1>
                     <ul class="list-inline">
-                        <li class="list-item"><i class="fas fa-star"></i>Member since <fmt:formatDate value="${activeUser.created_at_toDate}" type="date" dateStyle="long" /></li>
+                        <li class="list-item">Member since <fmt:formatDate value="${activeUser.created_at_toDate}" type="date" dateStyle="long" /></li>
                         <li class="list-item">Last Updated: <fmt:formatDate value="${activeUser.updated_at_toDate}" type="both" dateStyle="full" timeStyle="long" /></li>
                     </ul>
                 </div>

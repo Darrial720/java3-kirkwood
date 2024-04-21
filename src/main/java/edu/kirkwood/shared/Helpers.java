@@ -1,5 +1,6 @@
 package edu.kirkwood.shared;
 import edu.kirkwood.learnx.model.User;
+import edu.kirkwood.personal_project.model.UserTwo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -66,4 +67,23 @@ public class Helpers {
         }
         return status;
     }
+
+
+    public static boolean isActiveDbz(UserTwo userTwo){
+        boolean status = false;
+        if(userTwo != null && userTwo.getStatus().equals("active")){
+            status = true;
+        }
+
+        return status;
+    }
+    public static boolean isPlayer(UserTwo userTwo){
+        boolean status = false;
+        if(isActiveDbz(userTwo) == true && userTwo.getPrivileges().equals("player")){
+            status = true;
+        }
+        return status;
+    }
+
+
 }

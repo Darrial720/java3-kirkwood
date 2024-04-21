@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/signin")
-public class SigninServlet extends HttpServlet{
+public class SigninServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String redirect = req.getParameter("redirect");
@@ -58,12 +58,13 @@ public class SigninServlet extends HttpServlet{
                     userFromDatabase.setPassword(null);
                     HttpSession session = req.getSession();
                     session.setAttribute("activeUser", userFromDatabase);
+                    session.setAttribute("language", userFromDatabase.getLanguage());
                     if(remember != null && remember[0].equals("yes")) {
-                        session.setMaxInactiveInterval(10); // 7 days
+                        session.setMaxInactiveInterval(7 * 24 * 60 * 60); // 7 days
                     }
-                    if(redirect != null && !redirect.equals("")){
+                    if(redirect != null && !redirect.equals("")) {
                         resp.sendRedirect(redirect);
-                    }else{
+                    } else {
                         session.setAttribute("flashMessageSuccess", "Welcome Back!");
                         resp.sendRedirect("learnx");
                     }
