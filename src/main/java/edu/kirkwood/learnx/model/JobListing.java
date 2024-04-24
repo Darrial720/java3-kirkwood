@@ -2,6 +2,7 @@ package edu.kirkwood.learnx.model;
 
 import org.jetbrains.annotations.NotNull;
 import java.time.Instant;
+import java.util.Date;
 
 public class JobListing {
     private int job_id;
@@ -76,6 +77,10 @@ public class JobListing {
 
     public void setPosted_at(Instant posted_at) {
         this.posted_at = posted_at;
+    }
+
+    public Date getPosted_at_toDate() {
+        return Date.from(posted_at);
     }
 
     public String getContract() {

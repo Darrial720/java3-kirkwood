@@ -15,10 +15,15 @@
 
                     <c:if test="${activeUser.privileges eq 'student'}">
                         <a class="list-group-item" href="${appURL}/student"><i class="fas fa-book-open-reader me-2"></i>Student Dashboard</a>
+                        <a class="list-group-item" href="${appURL}/delete-account"><i class="bi bi-trash fa-fw me-2"></i>Delete Account</a>
                     </c:if>
 
                     <a class="list-group-item" href="${appURL}/edit-profile"><i class="fas fa-user-pen me-2"></i>Edit Profile</a>
-                    <a class="list-group-item" href="${appURL}/delete-account"><i class="bi bi-trash fa-fw me-2"></i>Delete Account</a>
+
+                    <c:if test="${activeUser.privileges eq 'admin'}">
+                        <a class="list-group-item" href="${appURL}/all-users"><i class="fas fa-book-open-reader me-2"></i>All Users</a>
+                        <%--<a class="list-group-item" href="${appURL}/delete-account"><i class="bi bi-trash fa-fw me-2"></i>Delete Account</a>--%>
+                    </c:if>
                 </div>
             </div>
         </div><%--   End Offcanvas body     --%>
