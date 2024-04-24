@@ -1,27 +1,31 @@
 package edu.kirkwood.shared.chat;
 
+import jakarta.json.Json;
+import jakarta.json.JsonException;
+import jakarta.json.JsonObject;
 import jakarta.websocket.DecodeException;
 import jakarta.websocket.Decoder;
-import jakarta.websocket.EndpointConfig;
+
+import java.io.StringReader;
 
 public class MessageDecoder implements Decoder.Text<Message> {
-    @Override
-    public void init(EndpointConfig config) {
-        Text.super.init(config);
-    }
-
-    @Override
-    public void destroy() {
-        Text.super.destroy();
-    }
 
     @Override
     public Message decode(String s) throws DecodeException {
-        return null;
+        JsonObject jsonObject = Json.createReader(new StringReader(s)).readObject();
+        return new Message(jsonObject);
     }
 
     @Override
     public boolean willDecode(String s) {
-        return false;
+        boolean result;
+        try {
+            JsonObject jsonObject = Json.createReader(new StringReader(s)).readObject();
+            result = true;
+        } catch (JsonException jex) {
+            result = false;
+        }
+        return result;
     }
+
 }
