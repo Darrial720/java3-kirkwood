@@ -15,7 +15,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="${appURL}/images/personal_project/goku.jpg" class="d-block w-100" alt="Goku">
+                <img src="${appURL}/images/personal_project/Goku.jpg" class="d-block w-100" alt="Goku">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Characters</h5>
                     <p>DragonBall Z Characters</p>

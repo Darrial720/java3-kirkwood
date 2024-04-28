@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Items_AbilitesDAO extends Database{
-    public static List<Items_Abilities> getALL(){
+    public static List<Items_Abilities> getAll(){
         List<Items_Abilities> items_abilities = new ArrayList<>();
         try (Connection connection = getConnection()) {
             if (connection != null) {

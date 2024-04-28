@@ -9,9 +9,9 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="${appURL}/dbzGame" class="nav-link px-2 link-dark">Home</a></li>
             <li><a href="${appURL}/all-characters" class="nav-link px-2">Characters</a></li>
-            <li><a href="#" class="nav-link px-2">Maps</a></li>
-            <li><a href="#" class="nav-link px-2">Abilities and Items</a></li>
-            <li><a href="#" class="nav-link px-2">About</a></li>
+            <li><a href="${appURL}/all-maps" class="nav-link px-2">Maps</a></li>
+            <li><a href="${appURL}/all-abilities-items" class="nav-link px-2">Abilities and Items</a></li>
+            <li><a href="${appURL}/about" class="nav-link px-2">About</a></li>
 
 
             <c:if test="${sessionScope.activeUser.privileges eq 'player'}">

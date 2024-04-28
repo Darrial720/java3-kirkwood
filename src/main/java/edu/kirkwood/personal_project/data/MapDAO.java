@@ -52,31 +52,20 @@ public class MapDAO extends Database{
         }
     }
 
-    /*public static String createMap(Map map) {
+    public static boolean createMap(Map map) {
         try (Connection connection = getConnection();
              CallableStatement statement = connection.prepareCall("{CALL sp_create_map(?, ?, ?, ?)}")
         ) {
-            statement.setString(1, user.getEmail());
-            String hashedPassword = BCrypt.hashpw(String.valueOf(user.getPassword()), BCrypt.gensalt(12));
-            statement.setString(2, hashedPassword);
+            statement.setInt(1, map.getPlayerCount());
+            statement.setString(2, map.getMapName());
+            statement.setInt(3, map.getMapUnlockLevel());
+            statement.setInt(4, map.getMapGameModes());
             int rowsAffected = statement.executeUpdate();
-            if (rowsAffected == 1) {
-                try (CallableStatement statement2 = connection.prepareCall("{CALL sp_get_2fa_code(?)}");) {
-                    statement2.setString(1, user.getEmail());
-                    ResultSet resultSet = statement2.executeQuery();
-                    if (resultSet.next()) {
-                        String code = resultSet.getString("code");
-                        String method = resultSet.getString("method");
-                        if (method.equals("email")) {
-                            return CommunicationService.sendNewUserEmail2(user.getEmail(), code);
-                        }
-                    }
-                }
-            }
+            return rowsAffected == 1;
         } catch (SQLException e) {
-            System.out.println("Likely error with stored procedure");
+            System.out.println("Map not created");
             System.out.println(e.getMessage());
         }
-        return "";
-    }*/
+        return false;
+    }
 }

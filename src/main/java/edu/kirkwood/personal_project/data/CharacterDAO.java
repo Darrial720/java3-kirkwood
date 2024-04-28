@@ -1,6 +1,7 @@
 package edu.kirkwood.personal_project.data;
 
 import edu.kirkwood.personal_project.model.Character;
+import edu.kirkwood.personal_project.model.Map;
 import edu.kirkwood.personal_project.model.UserTwo;
 
 import java.sql.CallableStatement;
@@ -34,5 +35,35 @@ public class CharacterDAO extends Database{
             System.out.println(e.getMessage());
         }
         return characters;
+    }
+
+    public static boolean createCharacter(Character character) {
+        try (Connection connection = getConnection();
+             CallableStatement statement = connection.prepareCall("{CALL sp_create_character(?, ?, ?)}")
+        ) {
+            statement.setString(1, character.getCharacter_name());
+            statement.setString(2, character.getCharacter_status());
+            statement.setInt(3, character.getCharacter_unlock_level());
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected == 1;
+        } catch (SQLException e) {
+            System.out.println("Character not created");
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public static void deleteCharacter(Character character){
+        try (Connection connection = getConnection()) {
+            if (connection != null) {
+                try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_character(?)}")) {
+                    statement.setInt(1, character.getCharacter_id());
+                    statement.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Character not deleted");
+            System.out.println(e.getMessage());
+        }
     }
 }

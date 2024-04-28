@@ -1,8 +1,7 @@
 <%@include file="/WEB-INF/personal_project/top.jsp"%>
 <main>
     <div class="container">
-        <hi>All Users</hi>
-        <p>There ${users.size() == 1 ? "is" : "are"}&nbsp;${users.size()} user${users.size() != 1 ? "s" : ""}</p>
+        <hi>All Accounts</hi>
         <div class="row">
             <div class="col-xl-12">
                 <div class="table-responsive">
