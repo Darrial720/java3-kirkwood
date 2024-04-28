@@ -10,26 +10,7 @@ Page content START -->
         <!-- Main content START -->
         <div class="col-xl-9 col-xxl-8">
 
-          <c:choose>
-            <c:when test="${not empty flashMessageSuccess}">
-              <div class="alert alert-success mb-2">
-                  ${flashMessageSuccess}
-              </div>
-              <c:remove var="flashMessageSuccess" scope="session"></c:remove>
-            </c:when>
-            <c:when test="${not empty flashMessageWarning}">
-              <div class="alert alert-warning mb-2">
-                  ${flashMessageWarning}
-              </div>
-              <c:remove var="flashMessageWarning" scope="session"></c:remove>
-            </c:when>
-            <c:when test="${not empty flashMessageDanger}">
-              <div class="alert alert-danger mb-2">
-                  ${flashMessageDanger}
-              </div>
-              <c:remove var="flashMessageDanger" scope="session"></c:remove>
-            </c:when>
-          </c:choose>
+          <%@include file="/WEB-INF/shared/flashMessage.jsp"%>
 
           <!-- Course list START -->
           <div class="row g-4">
@@ -74,11 +55,21 @@ Page content START -->
                           </div>
 
                           <c:if test="${activeUser.privileges eq 'student'}">
-                            <!-- Enroll -->
-                            <div class="mt-3 mt-sm-0">
-                              <a href="${appURL}/enroll?course=${course.id}" class="btn btn-dark">Enroll</a>
-                            </div>
-                          </c:if>
+                          <!-- Enroll -->
+                          <c:choose>
+                            <c:when test="${courseMap.containsKey(course) or not empty courseMap[course]}">
+                              <div class="mt-3 mt-sm-0">
+                                <a href="${appURL}/enroll?course=${course.id}" class="btn btn-secondary disabled">Enrolled</a>
+                              </div>
+                            </c:when>
+                            <c:otherwise>
+                              <div class="mt-3 mt-sm-0">
+                                <a href="${appURL}/enroll?course=${course.id}" class="btn btn-dark">Enroll</a>
+                              </div>
+                            </c:otherwise>
+
+                          </c:choose>
+                        </c:if>
                         </div>
                       </div>
                     </div>

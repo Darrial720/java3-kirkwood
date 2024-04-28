@@ -32,10 +32,11 @@ public class Enroll extends HttpServlet {
         int courseIdInt = Integer.parseInt(courseId);
         HttpSession session = req.getSession();
         User userFromSession = (User)session.getAttribute("activeUser");
-        if(Helpers.isStudent(userFromSession) == true) {
+        if(!Helpers.isStudent(userFromSession) == true) {
             resp.sendRedirect("courses");
             return;
         }
+
         if(CourseDAO.enroll(userFromSession.getId(), courseIdInt)) {
             session.setAttribute("flashMessageSuccess", "You are enrolled!");
             resp.sendRedirect("student");
