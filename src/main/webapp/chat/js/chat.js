@@ -12,7 +12,9 @@ websocket.onclose = function(event) {
 }
 
 websocket.onmessage = function(event) {
-    console.log(event.data);
+    // Incoming Message - Called when a message is received
+    // console.log(event.data);
+    updateTextArea(event.data, "in");
 }
 
 websocket.onerror = function(event) {
@@ -53,10 +55,27 @@ messageForm.addEventListener("submit", function(event) {
             "message": message
         }
     );
-    // Update the textarea just like we would with an incoming message
-    // updateTextArea(json, "out");
-    // Send the message
+    // Update the textarea with the outgoing message
+    updateTextArea(json, "out");
+    // Outgoing message - Send the message to the Java endpoint
     sendText(json);
     // Set the message text field to blank so it is ready for the next message
     // prepMessageBox();
 });
+
+function updateTextArea(jsonStr, inOut) {
+    // Convert the JSON back into a Javasript object
+    const json = JSON.parse(jsonStr);
+    const name = json.name;
+    const message = json.message;
+
+    // Structuring output with HTML
+    let output = "<div>";
+    output += "<p>" + message + "</p>";
+    output += "<span>" + name + "</span>";
+    output += "</div>";
+
+    // Display the HTML
+    const messageBox = document.getElementById("messages");
+    messageBox.innerHTML += output;
+}
