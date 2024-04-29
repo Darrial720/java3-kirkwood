@@ -1,8 +1,9 @@
 package edu.kirkwood.personal_project.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.jetbrains.annotations.NotNull;
 
-public class Character {
+public class Character implements Comparable<Character>{
     @JsonProperty("character_id")
     private int character_id;
 
@@ -65,5 +66,14 @@ public class Character {
                 ", character_status='" + character_status + '\'' +
                 ", character_unlock_level=" + character_unlock_level +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NotNull Character o) {
+        int result = this.getCharacter_name().compareTo(o.getCharacter_name());
+        if(result == 0){
+            result = this.getCharacter_status().compareTo(o.getCharacter_status());
+        }
+        return result;
     }
 }
