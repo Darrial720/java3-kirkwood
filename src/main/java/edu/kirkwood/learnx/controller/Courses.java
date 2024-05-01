@@ -29,8 +29,16 @@ public class Courses extends HttpServlet {
             skillFilter = "";
         }
         // To do: For pagination
-        int limit = 10;
-        int offset = 0;
+        int limit = 2;
+        String pageStr = req.getParameter("page");
+        int page = 1;
+        try{
+            page = Integer.parseInt(pageStr);
+        }catch(NumberFormatException e){
+
+        }
+
+        int offset = (page - 1) * limit;
         List<Course> courses = CourseDAO.get(limit, offset, categoryFilter, skillFilter);
         List<CourseCategory> categories = CourseDAO.getAllCategories();
         HttpSession session = req.getSession();

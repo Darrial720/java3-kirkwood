@@ -2,7 +2,6 @@
 <main>
     <div class="container">
         <h1>${pageTitle}</h1>
-        <p>There ${courses.size() == 1 ? "is" : "are"}&nbsp;${courses.size()} user${courses.size() != 1 ? "s" : ""}</p>
         <div class="row">
             <div class="col-xl-12">
                 <div class="table-responsive">
