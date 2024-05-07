@@ -12,6 +12,8 @@ Page content START -->
 
           <%@include file="/WEB-INF/shared/flashMessage.jsp"%>
 
+          <%@ include file="/WEB-INF/learnx/pagination.jsp" %>
+
           <!-- Course list START -->
           <div class="row g-4">
             <c:forEach items="${courses}" var="course">
@@ -101,13 +103,13 @@ Page content START -->
           </div>
           <!-- Course list END -->
 
-          <%--                    Start Pagination--%>
+          <%--                    Start Pagination
 
           <nav aria-label="pagination-nav">
             <ul class="pagination">
-              <%--                            <li class="page-item disabled">--%>
-              <%--                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>--%>
-              <%--                            </li>--%>
+                                          <li class="page-item disabled">
+                                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                          </li>
               <li class="page-item">
                 <a class="page-link" href="${appURL}/courses?page=1">1</a>
               </li>
@@ -117,14 +119,14 @@ Page content START -->
               <li class="page-item">
                 <a class="page-link" href="${appURL}/courses?page=3">3</a>
               </li>
-              <%--                            <li class="page-item">--%>
-              <%--                                <a class="page-link" href="#">Next</a>--%>
-              <%--                            </li>--%>
+                                          <li class="page-item">
+                                              <a class="page-link" href="#">Next</a>
+                                          </li>
             </ul>
           </nav>
 
-          <%--                    Stop Pagination--%>
-
+                              Stop Pagination
+--%>
         </div>
         <!-- Main content END -->
 

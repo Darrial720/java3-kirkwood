@@ -119,5 +119,18 @@ public class CourseDAO extends Database {
     }
 
 
+    public static int getCourseCount() {
+        try(Connection connection = getConnection();
+            CallableStatement statement = connection.prepareCall("{CALL sp_get_total_courses()}");
+            ResultSet resultSet = statement.executeQuery();
+        ) {
+            if(resultSet.next()) {
+                return resultSet.getInt("total_courses");
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
 
 }

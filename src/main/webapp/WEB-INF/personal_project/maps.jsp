@@ -8,6 +8,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th>Map Image</th>
                             <th scope="col">Map Name</th>
                             <th scope="col">Map Unlock Level</th>
                             <th scope="col">Map GameModes</th>
@@ -17,9 +18,9 @@
                         <tbody>
                         <c:forEach items="${maps}" var="map">
                             <tr>
-                                <%--<td><img src="${appURL}/images/personal_project/${character.character_name}.jpg"></td>--%>
-                                    <td>${map.mapName}</td>
-                                    <td>${map.mapUnlockLevel}</td>
+                                <td><img src="${appURL}/images/personal_project/${map.mapName}.jpg"></td>
+                                <td>${map.mapName}</td>
+                                <td>${map.mapUnlockLevel}</td>
                                 <td>${map.mapGameModes}</td>
                                 <td>${map.playerCount}</td>
                                 <%--<c:if test=""--%>

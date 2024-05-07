@@ -8,6 +8,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th>Ability/Item Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Ability Match up</th>
                             <th scope="col">Unlock Level</th>
@@ -16,6 +17,7 @@
                         <tbody>
                         <c:forEach items="${ItemsAbilities}" var="itemAbility">
                             <tr>
+                                <td><img src="${appURL}/images/personal_project/${itemAbility.item_ability_name}.jpg"></td>
                                 <td>${itemAbility.item_ability_name}</td>
                                 <td>${itemAbility.fk_ability_match_up}</td>
                                 <td>${character.fk_item_unlock_level}</td>

@@ -70,7 +70,7 @@ function updateTextArea(jsonStr, inOut) {
     const message = json.message;
 
     // Structuring output with HTML
-    let output = "<div>";
+    let output = (inOut === "in") ? "<div class=\"in\">" : "<div class=\"out\">";
     output += "<p>" + message + "</p>";
     output += "<span>" + name + "</span>";
     output += "</div>";
@@ -78,4 +78,6 @@ function updateTextArea(jsonStr, inOut) {
     // Display the HTML
     const messageBox = document.getElementById("messages");
     messageBox.innerHTML += output;
+
+    messageBox.scrollTop = messageBox.scrollHeight;
 }

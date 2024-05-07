@@ -6,8 +6,8 @@
 
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="${appURL}/terms" class="nav-link px-2 ">Terms and Conditions</a></li>
-            <li class="nav-item"><a href="${appURL}/privacy_policy" class="nav-link px-2 ">Privacy Policy</a></li>
+            <li class="nav-item"><a href="${appURL}/terms" class="nav-link px-2 link-info">Terms and Conditions</a></li>
+            <li class="nav-item"><a href="${appURL}/privacy_policy" class="nav-link px-2 link-info">Privacy Policy</a></li>
         </ul>
     </footer>
 </div>

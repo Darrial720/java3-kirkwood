@@ -16,6 +16,9 @@
                     <span>${jobListing.location}</span>
                 </div>
             </div>
+            <div>
+               <button class="btn btn-primary mb-0"><a href="${appURL}/application">Apply</a> </button>
+            </div>
             <div class="col-md-6 text-md-end d-flex justify-content-md-end align-items-md-center">
                 <div class="mb-2">
                     <span class="badge bg-primary rounded-pill">Tag</span>
