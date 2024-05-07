@@ -2,6 +2,7 @@
 <main>
     <div class="container">
         <hi>All Accounts</hi>
+        <br/>
         <div class="row">
             <div class="col-xl-12">
                 <div class="table-responsive">
@@ -19,6 +20,7 @@
                             <th scope="col">Created At</th>
                             <th scope="col">Last logged In</th>
                             <th scope="col">Updated At</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,6 +37,8 @@
                                 <td>${user.created_at}</td>
                                 <td>${user.last_logged_in}</td>
                                 <td>${user.updated_at}</td>
+                                <td><a href="${appURL}/edit-user-servlet?id=${user.id}" class="btn btn-primary mb-sm-2">Edit</a>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>

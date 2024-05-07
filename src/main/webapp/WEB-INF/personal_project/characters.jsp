@@ -20,6 +20,7 @@
                             <th scope="col">Character Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Unlock Level</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,10 +29,11 @@
                                 <td><img src="${appURL}/images/personal_project/${character.character_name}.jpg"></td>
                                 <td>${character.character_name}</td>
                                 <td>${character.character_unlock_level}</td>
-                                <%--<c:if test="${sessionScope.activeUser.privileges eq 'admin'}">
-                                <td><a href="${appURL}/delete-character" class="btn btn-outline-orange me-2">Delete Character</a></td>
-                                <td></td>
-                                </c:if>--%>
+                                <c:if test="${sessionScope.activeUser.privileges eq 'admin'}">
+                                <td>
+                                    <a href="${appURL}/delete-character?id=${character.character_id}" class="btn btn-danger mb-sm-2">Delete Character</a>
+                                </td>
+                                </c:if>
                             </tr>
                         </c:forEach>
                         </tbody>

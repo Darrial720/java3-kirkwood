@@ -24,7 +24,7 @@
             </div>
             <!-- Card body -->
             <div class="card-body">
-              <form method="POST" action="${appURL}/delete-character">
+              <form method="POST" action="${appURL}/delete-character?id=${character.character_id}">
                 <button type="submit" class="btn btn-danger mb-0">Delete character</button>
               </form>
             </div>
