@@ -23,6 +23,7 @@
                     <c:if test="${activeUser.privileges eq 'admin'}">
                         <a class="list-group-item" href="${appURL}/all-users"><i class="fas fa-book-open-reader me-2"></i>All Users</a>
                         <a class="list-group-item" href="${appURL}/courses"><i class="bi bi-trash fa-fw me-2"></i>All Courses</a>
+                        <a class="list-group-item" href="${appURL}/applications"><i class="bi bi-trash fa-fw me-2"></i>All Applications</a>
                     </c:if>
                 </div>
             </div>

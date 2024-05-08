@@ -16,16 +16,16 @@
                     <span>${jobListing.location}</span>
                 </div>
             </div>
-            <div>
-               <button class="btn btn-primary mb-0"><a href="${appURL}/application">Apply</a> </button>
-            </div>
             <div class="col-md-6 text-md-end d-flex justify-content-md-end align-items-md-center">
+               <button class="btn btn-primary text-md align-items-md-center"><a class="link-dark" href="${appURL}/application?job_id=${jobListing.job_id}">Apply</a> </button>
+            </div>
+            <%--<div class="col-md-6 text-md-end d-flex justify-content-md-end align-items-md-center">
                 <div class="mb-2">
                     <span class="badge bg-primary rounded-pill">Tag</span>
                     <span class="ms-2 badge bg-secondary rounded-pill">Tag</span>
                     <span class="ms-2 badge bg-dark rounded-pill">Tag</span>
                 </div>
-            </div>
+            </div>--%>
         </div>
         </c:forEach>
     </div>

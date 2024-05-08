@@ -51,4 +51,32 @@ public class JobListingDAO extends Database{
         }
         return jobListings;
     }
+
+    public static JobListing getJobListingByID(int p_job_id){
+        JobListing jobListing = new JobListing();
+        try(Connection connection = getConnection();
+            CallableStatement statement = connection.prepareCall("{CALL sp_get_job_listings_by_id(?)}");
+        ) {
+            statement.setInt(1, p_job_id);
+
+            try(ResultSet resultSet = statement.executeQuery()) {
+                while(resultSet.next()) {
+                    int job_id = resultSet.getInt("job_id");
+                    int department_id = resultSet.getInt("department_id");
+                    String department_name = resultSet.getString("department_name");
+                    String position= resultSet.getString("position");
+                    Instant posted_at = resultSet.getTimestamp("posted_at").toInstant();
+                    String contract = resultSet.getString("contract");
+                    String location = resultSet.getString("location");
+                    String description = resultSet.getString("description");
+                    boolean featured = resultSet.getBoolean("featured");
+                    jobListing = new JobListing(job_id, department_id, department_name, featured, position, posted_at, contract, location, description);
+
+                }
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return jobListing;
+    }
 }
